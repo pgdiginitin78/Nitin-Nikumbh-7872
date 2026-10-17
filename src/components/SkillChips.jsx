@@ -282,7 +282,7 @@ export default function SkillChips({ items }) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="flex flex-wrap gap-2.5 sm:gap-3"
+        className="flex flex-wrap gap-2 md:gap-2 lg:gap-2.5"
       >
         {chips.map((chip) => {
           const isSvgBundle = SVG_ICONS && SVG_ICONS[chip.id];
@@ -297,30 +297,30 @@ export default function SkillChips({ items }) {
               whileTap={{ scale: 0.95 }}
               onHoverStart={() => setActiveChip(chip.id)}
               onHoverEnd={() => setActiveChip(null)}
-              className={`group relative inline-flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full border backdrop-blur-md cursor-pointer transition-all duration-300 select-none shadow-sm ${chip.bg} ${chip.border} ${chip.glow} ${
+              className={`group relative inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 md:px-2.5 md:py-1.5 lg:px-3.5 lg:py-2 rounded-full border backdrop-blur-md cursor-pointer transition-all duration-300 select-none shadow-sm ${chip.bg} ${chip.border} ${chip.glow} ${
                 isActive ? 'ring-1 ring-sky-400/50 shadow-lg' : ''
               }`}
             >
-              <span className="relative flex items-center justify-center w-4 h-4 flex-shrink-0">
+              <span className="relative flex items-center justify-center w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0">
                 {isSvgBundle ? (
                   <img
                     src={SVG_ICONS[chip.id]}
                     alt={chip.label}
-                    className="w-4 h-4 object-contain filter group-hover:brightness-125 transition-all duration-300"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain filter group-hover:brightness-125 transition-all duration-300"
                   />
                 ) : isExtra ? (
                   isExtra
                 ) : (
-                  <span className={`w-2 h-2 rounded-full ${chip.dot}`} />
+                  <span className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${chip.dot}`} />
                 )}
               </span>
 
-              <span className={`text-xs sm:text-sm font-medium tracking-wide ${chip.text}`}>
+              <span className={`text-[11px] sm:text-xs md:text-[11.5px] lg:text-xs font-medium tracking-wide ${chip.text}`}>
                 {chip.label}
               </span>
 
               <span
-                className={`w-1.5 h-1.5 rounded-full ${chip.dot} opacity-60 group-hover:opacity-100 transition-opacity`}
+                className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full ${chip.dot} opacity-60 group-hover:opacity-100 transition-opacity`}
               />
             </motion.div>
           );

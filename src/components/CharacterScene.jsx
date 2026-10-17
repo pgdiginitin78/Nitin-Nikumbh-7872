@@ -105,16 +105,13 @@ export default function CharacterScene({ onReady }) {
       }
 
       const aboutWrapper = document.getElementById('about-character-target');
-      const aboutSection = document.getElementById('about');
-      if (aboutWrapper && aboutSection) {
+      if (aboutWrapper) {
         const aRect = aboutWrapper.getBoundingClientRect();
-        const aboutRect = aboutSection.getBoundingClientRect();
         const visualRightShift = isLg ? 80 : 0;
         const aboutScreenX = aRect.left + aRect.width / 2 + visualRightShift;
-        const aboutScreenY = aRect.top - aboutRect.top + aRect.height / 2;
         aboutOffset = {
           x: window.innerWidth / 2 - aboutScreenX,
-          y: window.innerHeight / 2 - aboutScreenY,
+          y: isLg ? 20 : 60,
         };
       }
 
@@ -132,13 +129,16 @@ export default function CharacterScene({ onReady }) {
 
       const isLg = window.innerWidth >= 1024;
       const heroCanvasHeight = isLg ? 720 : 550;
-      const aboutCanvasHeight = isLg ? 600 : 600;
+      const aboutCanvasHeight = isLg ? 650 : 500;
 
-      const baseZoomHero = width < 768 ? 0.62 : width < 1200 ? 0.78 : 0.9;
-      const baseZoomAbout = width < 768 ? 0.65 : width < 1200 ? 0.75 : 0.85;
+      const baseZoomHero = width < 768 ? 0.62 : width < 1024 ? 0.78 : width < 1200 ? 0.82 : 0.9;
+      const baseZoomAbout = width < 768 ? 0.65 : width < 1024 ? 0.76 : width < 1200 ? 0.80 : 0.85;
 
-      const heroZoom = baseZoomHero * (heroCanvasHeight / height);
-      const aboutZoom = baseZoomAbout * (aboutCanvasHeight / height);
+      const heroScale = Math.min(1, Math.max(0.65, heroCanvasHeight / Math.min(height, 900)));
+      const aboutScale = Math.min(1, Math.max(0.65, aboutCanvasHeight / Math.min(height, 900)));
+
+      const heroZoom = baseZoomHero * heroScale;
+      const aboutZoom = baseZoomAbout * aboutScale;
 
       camState.zoom = gsap.utils.interpolate(heroZoom, aboutZoom, scrollProgress);
       camera.zoom = camState.zoom;
@@ -203,7 +203,7 @@ export default function CharacterScene({ onReady }) {
         trigger: '#home',
         start: 'top top',
         endTrigger: '#about',
-        end: 'top top',
+        end: 'bottom bottom',
         pin: container.parentElement,
         pinSpacing: false,
         scrub: true,
@@ -220,7 +220,7 @@ export default function CharacterScene({ onReady }) {
           camState.z = gsap.utils.interpolate(24.05, 32, p);
 
           camState.lookX = 0;
-          camState.lookY = gsap.utils.interpolate(12.0, 7.0, p);
+          camState.lookY = gsap.utils.interpolate(12.0, isLg ? 7.0 : 9.5, p);
           camState.lookZ = 0;
 
           camState.fov = gsap.utils.interpolate(14.5, 25, p);
@@ -228,11 +228,14 @@ export default function CharacterScene({ onReady }) {
           camState.offsetY = gsap.utils.interpolate(heroOffset.y, aboutOffset.y, p);
 
           const heroCanvasHeight = isLg ? 720 : 550;
-          const baseZoomHero = window.innerWidth < 1200 ? 0.75 : 0.9;
-          const baseZoomAbout = window.innerWidth < 1200 ? 0.75 : 0.85;
+          const baseZoomHero = window.innerWidth < 1024 ? 0.78 : window.innerWidth < 1200 ? 0.82 : 0.9;
+          const baseZoomAbout = window.innerWidth < 1024 ? 0.72 : window.innerWidth < 1200 ? 0.80 : 0.85;
 
-          const heroZoom = baseZoomHero * (heroCanvasHeight / window.innerHeight);
-          const aboutZoom = baseZoomAbout * (aboutCanvasHeight / window.innerHeight);
+          const heroScale = Math.min(1, Math.max(0.65, heroCanvasHeight / Math.min(window.innerHeight, 900)));
+          const aboutScale = Math.min(1, Math.max(0.65, aboutCanvasHeight / Math.min(window.innerHeight, 900)));
+
+          const heroZoom = baseZoomHero * heroScale;
+          const aboutZoom = baseZoomAbout * aboutScale;
 
           camState.zoom = gsap.utils.interpolate(heroZoom, aboutZoom, p);
 

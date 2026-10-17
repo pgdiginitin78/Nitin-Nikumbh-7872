@@ -274,9 +274,9 @@ export default function Home() {
           </motion.p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 mt-4 pb-14">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
+        <div className="max-w-7xl mx-auto px-6 mt-2 md:mt-4 pb-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-center justify-center">
+            <div className="space-y-4 flex flex-col justify-center">
               <div>
                 <SkillChips
                   items={[
@@ -302,11 +302,11 @@ export default function Home() {
                   ]}
                 />
               </div>
-              <div className="pt-4">
+              <div className="pt-2 md:pt-3">
                 <button
                   type="button"
                   onClick={() => scrollTo('projects')}
-                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-sky-400/50 transition-all shadow-lg shadow-black/20 cursor-pointer"
+                  className="inline-flex items-center justify-center px-6 py-2.5 md:px-7 md:py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-sky-400/50 transition-all shadow-lg shadow-black/20 cursor-pointer text-sm md:text-base"
                 >
                   Check out my projects
                   <svg
@@ -328,7 +328,7 @@ export default function Home() {
 
             <div
               id="about-character-target"
-              className="relative md:flex justify-center hidden  h-[350px] lg:h-[580px] w-full mt-8 lg:mt-0"
+              className="relative md:flex items-center justify-center hidden h-[400px] md:h-[460px] lg:h-[580px] w-full mt-2 lg:mt-0"
             >
               <div className="absolute bottom-0 left-0 right-0 bg-sky-500/20 blur-[100px] rounded-full w-full max-w-sm h-[90%] mx-auto z-0" />
               <div className="absolute w-full h-[600px] lg:h-[800px] top-[-100px] lg:top-[-180px] z-10 pointer-events-none" />
