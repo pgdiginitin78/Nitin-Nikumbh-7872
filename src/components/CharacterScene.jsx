@@ -152,14 +152,14 @@ export default function CharacterScene({ onReady }) {
     observer.observe(container);
 
     draco = new DRACOLoader();
-    draco.setDecoderPath('/draco/');
+    draco.setDecoderPath(`${import.meta.env.BASE_URL}draco/`);
     draco.setWorkerLimit(2);
     draco.preload();
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(draco);
 
-    new RGBELoader().load('/environment.hdr', (texture) => {
+    new RGBELoader().load(`${import.meta.env.BASE_URL}environment.hdr`, (texture) => {
       if (disposed) {
         texture.dispose();
         return;
@@ -248,7 +248,7 @@ export default function CharacterScene({ onReady }) {
     };
 
     loader.load(
-      '/character.glb',
+      `${import.meta.env.BASE_URL}character.glb`,
       (gltf) => {
         if (disposed) return;
         model = gltf.scene;

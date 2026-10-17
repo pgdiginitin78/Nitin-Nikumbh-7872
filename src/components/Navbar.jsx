@@ -60,7 +60,7 @@ export default function Navbar() {
       <div className="max-w-7xl w-full mx-auto rounded-2xl bg-white/5 backdrop-blur-xl backdrop-saturate-150 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
         <div className="flex justify-between h-16 items-center px-5">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={(e) => handleLinkClick(e, '#home')}>
-            <img src="/logo.png" alt="My Logo" className="h-16 w-auto" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="My Logo" className="h-16 w-auto" />
           </div>
           <div className="hidden md:flex space-x-8">
             {navLinks.map((item) => (
