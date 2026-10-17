@@ -124,7 +124,9 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl w-full mx-auto px-6 pt-28 pb-16 md:pt-28 md:pb-12 min-h-[100dvh] md:h-full flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-8 lg:gap-12 text-center md:text-left">
           <div className="flex flex-col justify-center animate-[fadeUp_0.9s_ease-out_both] w-full max-w-xl mx-auto md:max-w-none md:pt-4">
-            <p className="mt-0 text-[1.1rem] md:text-[1.15rem] text-slate-400 tracking-wider">Hi, I'm</p>
+            <p className="mt-0 text-[1.1rem] md:text-[1.15rem] text-slate-400 tracking-wider">
+              Hi, I'm
+            </p>
             <h1 className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-extrabold leading-[1.1] text-slate-50 tracking-tight mt-1">
               Nitin{' '}
               <span className="bg-[linear-gradient(90deg,#38bdf8,#818cf8,#c084fc,#38bdf8)] bg-[length:300%_100%] bg-clip-text text-transparent animate-[shimmer_6s_linear_infinite]">
@@ -184,19 +186,25 @@ export default function Home() {
 
             <ul className="flex flex-wrap justify-center md:justify-start w-full gap-8 lg:gap-10 pt-2">
               <li className="flex flex-col">
-                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">5+</strong>
+                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                  5+
+                </strong>
                 <span className="text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
                   Years Experience
                 </span>
               </li>
               <li className="flex flex-col">
-                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">12+</strong>
+                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                  12+
+                </strong>
                 <span className="text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
                   Projects Built
                 </span>
               </li>
               <li className="flex flex-col">
-                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">100%</strong>
+                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                  100%
+                </strong>
                 <span className="text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
                   Responsive
                 </span>
