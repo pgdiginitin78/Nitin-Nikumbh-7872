@@ -106,7 +106,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#050816] text-slate-200" data-lenis-prevent="true">
       <section
-        className="relative min-h-[100dvh] md:h-[100dvh] overflow-hidden bg-[radial-gradient(ellipse_at_20%_20%,rgba(56,189,248,0.12),transparent_55%),radial-gradient(ellipse_at_85%_70%,rgba(139,92,246,0.16),transparent_55%),linear-gradient(135deg,#050816_0%,#0b1026_40%,#141238_75%,#1a0f2e_100%)] text-slate-200 flex items-center justify-center"
+        className="relative min-h-[100dvh] overflow-hidden bg-[radial-gradient(ellipse_at_20%_20%,rgba(56,189,248,0.12),transparent_55%),radial-gradient(ellipse_at_85%_70%,rgba(139,92,246,0.16),transparent_55%),linear-gradient(135deg,#050816_0%,#0b1026_40%,#141238_75%,#1a0f2e_100%)] text-slate-200 flex items-center justify-center"
         id="home"
         data-lenis-prevent="true"
       >
@@ -121,7 +121,7 @@ export default function Home() {
 
         <Snowfall />
 
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-24 pb-10 md:pt-28 md:pb-12 min-h-[100dvh] md:h-full flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-6 lg:gap-12 text-center md:text-left">
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-24 pb-8 md:pt-24 md:pb-8 lg:pt-28 lg:pb-12 min-h-[100dvh] flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-4 lg:gap-12 text-center md:text-left">
           <div className="flex flex-col justify-center animate-[fadeUp_0.9s_ease-out_both] w-full max-w-xl mx-auto md:max-w-none md:pt-4">
             <p className="mt-0 text-[1.1rem] md:text-[1.15rem] text-slate-400 tracking-wider">
               Hi, I'm
@@ -132,11 +132,11 @@ export default function Home() {
                 Nikumbh
               </span>
             </h1>
-            <h2 className="mt-3 text-[clamp(1.1rem,2vw,1.45rem)] font-semibold text-slate-300 flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <h2 className="mt-2 md:mt-3 text-[clamp(1.1rem,2vw,1.45rem)] font-semibold text-slate-300 flex flex-wrap items-center justify-center md:justify-start gap-2">
               Frontend Developer
             </h2>
 
-            <p className="mt-4 max-w-[34rem] mx-auto md:ml-0 md:mr-auto text-[0.98rem] md:text-[1.02rem] leading-relaxed text-slate-400">
+            <p className="mt-3 md:mt-4 max-w-[34rem] mx-auto md:ml-0 md:mr-auto text-[0.92rem] md:text-[0.96rem] lg:text-[1.02rem] leading-relaxed text-slate-400">
               I craft fast, responsive and pixel-perfect web experiences — turning ideas into clean,
               interactive interfaces with modern frameworks, smooth animations and a sharp eye for
               design.
@@ -185,28 +185,28 @@ export default function Home() {
               </div>
             </div>
 
-            <ul className="grid grid-cols-3 max-w-md mx-auto md:mx-0 md:flex md:flex-wrap justify-center md:justify-start w-full gap-2 sm:gap-6 md:gap-8 lg:gap-10 pt-3">
+            <ul className="grid grid-cols-3 max-w-md mx-auto md:mx-0 lg:max-w-none lg:flex lg:flex-wrap justify-center md:justify-start w-full gap-2 sm:gap-4 md:gap-3 lg:gap-8 pt-2">
               <li className="flex flex-col items-center md:items-start text-center md:text-left">
-                <strong className="text-[1.45rem] sm:text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                <strong className="text-[1.35rem] sm:text-[1.55rem] md:text-[1.55rem] lg:text-[1.75rem] font-extrabold text-slate-50">
                   5+
                 </strong>
-                <span className="text-[0.72rem] sm:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
+                <span className="text-[0.7rem] sm:text-[0.75rem] md:text-[0.72rem] lg:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
                   Years Experience
                 </span>
               </li>
               <li className="flex flex-col items-center md:items-start text-center md:text-left">
-                <strong className="text-[1.45rem] sm:text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                <strong className="text-[1.35rem] sm:text-[1.55rem] md:text-[1.55rem] lg:text-[1.75rem] font-extrabold text-slate-50">
                   12+
                 </strong>
-                <span className="text-[0.72rem] sm:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
+                <span className="text-[0.7rem] sm:text-[0.75rem] md:text-[0.72rem] lg:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
                   Projects Built
                 </span>
               </li>
               <li className="flex flex-col items-center md:items-start text-center md:text-left">
-                <strong className="text-[1.45rem] sm:text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                <strong className="text-[1.35rem] sm:text-[1.55rem] md:text-[1.55rem] lg:text-[1.75rem] font-extrabold text-slate-50">
                   100%
                 </strong>
-                <span className="text-[0.72rem] sm:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
+                <span className="text-[0.7rem] sm:text-[0.75rem] md:text-[0.72rem] lg:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
                   Responsive
                 </span>
               </li>
@@ -558,7 +558,7 @@ export default function Home() {
 
       <CharacterScene />
 
-      <div className="hidden md:block absolute top-0 left-0 w-full h-[100dvh] pointer-events-none z-[30] overflow-hidden">
+      <div className="hidden lg:block absolute top-0 left-0 w-full h-[100dvh] pointer-events-none z-[30] overflow-hidden">
         <div className="absolute bottom-0 left-0 w-full h-[15vh] bg-gradient-to-t from-[#1a0f2e] to-transparent" />
       </div>
     </div>
