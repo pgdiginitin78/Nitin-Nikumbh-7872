@@ -121,39 +121,39 @@ export default function Home() {
 
         <Snowfall />
 
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-6 pt-28 pb-16 md:pt-28 md:pb-12 min-h-[100dvh] md:h-full flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-8 lg:gap-12 text-center md:text-left">
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 pt-24 pb-12 md:pt-28 md:pb-12 min-h-[100dvh] md:h-full flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-6 lg:gap-12 text-center md:text-left">
           <div className="flex flex-col justify-center animate-[fadeUp_0.9s_ease-out_both] w-full max-w-xl mx-auto md:max-w-none md:pt-4">
-            <p className="mt-0 text-[1.1rem] md:text-[1.15rem] text-slate-400 tracking-wider">
+            <p className="mt-0 text-[1.05rem] md:text-[1.15rem] text-slate-400 tracking-wider">
               Hi, I'm
             </p>
-            <h1 className="text-[clamp(2.5rem,5.5vw,4.5rem)] font-extrabold leading-[1.1] text-slate-50 tracking-tight mt-1">
+            <h1 className="text-[clamp(2.4rem,5vw,4.5rem)] font-extrabold leading-[1.1] text-slate-50 tracking-tight mt-1">
               Nitin{' '}
               <span className="bg-[linear-gradient(90deg,#38bdf8,#818cf8,#c084fc,#38bdf8)] bg-[length:300%_100%] bg-clip-text text-transparent animate-[shimmer_6s_linear_infinite]">
                 Nikumbh
               </span>
             </h1>
-            <h2 className="mt-3 text-[clamp(1.1rem,2vw,1.45rem)] font-semibold text-slate-300 flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <h2 className="mt-2.5 sm:mt-3 text-[clamp(1.1rem,2vw,1.45rem)] font-semibold text-slate-300 flex flex-wrap items-center justify-center md:justify-start gap-2">
               Frontend Developer
             </h2>
 
-            <p className="mt-4 max-w-[34rem] mx-auto md:ml-0 md:mr-auto text-[0.98rem] md:text-[1.02rem] leading-relaxed text-slate-400">
+            <p className="mt-4 max-w-[34rem] mx-auto md:ml-0 md:mr-auto text-[0.95rem] md:text-[1.02rem] leading-relaxed text-slate-400">
               I craft fast, responsive and pixel-perfect web experiences — turning ideas into clean,
               interactive interfaces with modern frameworks, smooth animations and a sharp eye for
               design.
             </p>
 
-            <div className="my-6 md:my-7 flex flex-wrap justify-center md:justify-start items-center gap-4">
+            <div className="my-5 sm:my-6 md:my-7 flex flex-wrap justify-center md:justify-start items-center gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={() => scrollTo('activity')}
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full font-semibold text-[0.95rem] transition-all duration-250 ease-in-out cursor-pointer hover:-translate-y-[3px] text-white bg-[linear-gradient(135deg,#0ea5e9,#7c3aed)] shadow-[0_10px_30px_-10px_rgba(124,58,237,0.7)] hover:shadow-[0_16px_40px_-10px_rgba(14,165,233,0.8)]"
+                className="inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-full font-semibold text-[0.92rem] sm:text-[0.95rem] transition-all duration-250 ease-in-out cursor-pointer hover:-translate-y-[3px] text-white bg-[linear-gradient(135deg,#0ea5e9,#7c3aed)] shadow-[0_10px_30px_-10px_rgba(124,58,237,0.7)] hover:shadow-[0_16px_40px_-10px_rgba(14,165,233,0.8)]"
               >
                 Hire Me
               </button>
               <button
                 type="button"
                 onClick={() => scrollTo('projects')}
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full font-semibold text-[0.95rem] transition-all duration-250 ease-in-out cursor-pointer hover:-translate-y-[3px] text-slate-200 border border-slate-200/20 bg-white/5 backdrop-blur-md hover:border-sky-400 hover:text-sky-400"
+                className="inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-full font-semibold text-[0.92rem] sm:text-[0.95rem] transition-all duration-250 ease-in-out cursor-pointer hover:-translate-y-[3px] text-slate-200 border border-slate-200/20 bg-white/5 backdrop-blur-md hover:border-sky-400 hover:text-sky-400"
               >
                 View My Work
               </button>
@@ -183,28 +183,28 @@ export default function Home() {
               </a>
             </div>
 
-            <ul className="flex flex-wrap justify-center md:justify-start w-full gap-8 lg:gap-10 pt-2">
+            <ul className="flex flex-wrap justify-center md:justify-start w-full gap-5 sm:gap-8 lg:gap-10 pt-2">
               <li className="flex flex-col">
-                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                <strong className="text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
                   5+
                 </strong>
-                <span className="text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
+                <span className="text-[0.75rem] sm:text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
                   Years Experience
                 </span>
               </li>
               <li className="flex flex-col">
-                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                <strong className="text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
                   12+
                 </strong>
-                <span className="text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
+                <span className="text-[0.75rem] sm:text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
                   Projects Built
                 </span>
               </li>
               <li className="flex flex-col">
-                <strong className="text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
+                <strong className="text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] font-extrabold text-slate-50">
                   100%
                 </strong>
-                <span className="text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
+                <span className="text-[0.75rem] sm:text-[0.78rem] text-slate-500 uppercase tracking-[0.08em]">
                   Responsive
                 </span>
               </li>
@@ -213,7 +213,7 @@ export default function Home() {
 
           <div
             id="hero-character-target"
-            className="relative w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] flex items-center justify-center animate-[fadeIn_1.2s_ease-out_0.2s_both] pointer-events-none"
+            className="relative w-full h-[280px] sm:h-[350px] md:h-[480px] lg:h-[580px] flex items-center justify-center animate-[fadeIn_1.2s_ease-out_0.2s_both] pointer-events-none"
           />
         </div>
       </section>
