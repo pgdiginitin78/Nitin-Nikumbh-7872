@@ -1,0 +1,78 @@
+<nav #navContainer class="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
+  <div class="max-w-7xl w-full mx-auto rounded-2xl bg-white/5 backdrop-blur-xl backdrop-saturate-150 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+    <div class="flex justify-between h-16 items-center px-5">
+      <div class="flex-shrink-0 flex items-center cursor-pointer">
+        <img src="/logo.png" alt="My Logo" class="h-16 w-auto" />
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a
+          routerLink="/"
+          class="nav-link text-slate-300 hover:text-sky-400 px-3 py-2 rounded-md font-medium transition-colors"
+          >Home</a
+        >
+        <a
+          routerLink="/about"
+          class="nav-link text-slate-300 hover:text-sky-400 px-3 py-2 rounded-md font-medium transition-colors"
+          >About</a
+        >
+        <a
+          routerLink="/services"
+          class="nav-link text-slate-300 hover:text-sky-400 px-3 py-2 rounded-md font-medium transition-colors"
+          >Services</a
+        >
+        <a
+          routerLink="/contact"
+          class="nav-link text-slate-300 hover:text-sky-400 px-3 py-2 rounded-md font-medium transition-colors"
+          >Contact</a
+        >
+      </div>
+      <div class="md:hidden flex items-center">
+        <button
+          (click)="toggleMenu()"
+          class="text-slate-300 hover:text-sky-400 focus:outline-none p-2"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="isMenuOpen()"
+    class="md:hidden mt-2 max-w-7xl mx-auto rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg"
+  >
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a
+        routerLink="/"
+        (click)="toggleMenu()"
+        class="block text-slate-300 hover:bg-white/5 hover:text-sky-400 px-3 py-2 rounded-md text-base font-medium"
+        >Home</a
+      >
+      <a
+        routerLink="/about"
+        (click)="toggleMenu()"
+        class="block text-slate-300 hover:bg-white/5 hover:text-sky-400 px-3 py-2 rounded-md text-base font-medium"
+        >About</a
+      >
+      <a
+        routerLink="/services"
+        (click)="toggleMenu()"
+        class="block text-slate-300 hover:bg-white/5 hover:text-sky-400 px-3 py-2 rounded-md text-base font-medium"
+        >Services</a
+      >
+      <a
+        routerLink="/contact"
+        (click)="toggleMenu()"
+        class="block text-slate-300 hover:bg-white/5 hover:text-sky-400 px-3 py-2 rounded-md text-base font-medium"
+        >Contact</a
+      >
+    </div>
+  </div>
+</nav>
