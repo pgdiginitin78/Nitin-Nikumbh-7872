@@ -274,7 +274,7 @@ export default function Home() {
           </motion.p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 mt-4 pb-20">
+        <div className="max-w-7xl mx-auto px-6 mt-4 pb-14">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div>
@@ -427,7 +427,7 @@ export default function Home() {
         id="projects"
         data-lenis-prevent="true"
       >
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-100 mb-4">Projects</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-purple-500 mx-auto rounded-full" />
         </div>

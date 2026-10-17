@@ -62,7 +62,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={(e) => handleLinkClick(e, '#home')}>
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="My Logo" className="h-16 w-auto" />
           </div>
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-4 lg:space-x-8">
             {navLinks.map((item) => (
               <a
                 key={item.label}

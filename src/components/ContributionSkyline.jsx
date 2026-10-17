@@ -225,6 +225,7 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
   const stageRef = useRef(null);
   const canvasRef = useRef(null);
   const tipRef = useRef(null);
+  const scrollRef = useRef(null);
 
   const model = useMemo(() => {
     const end = dayMs(new Date());
@@ -237,12 +238,23 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
   }, [rawDays]);
 
   const swatches = useMemo(() => [
-    '#0e1e2d',
-    '#0c2d4a',
-    '#12508a',
-    '#2a88d8',
-    '#7cc7ff',
+    '#16263a',
+    '#10446e',
+    '#1669af',
+    '#38a5f5',
+    '#87d0ff',
   ], []);
+
+  useEffect(() => {
+    if (view === '2d' && scrollRef.current) {
+      const timer = setTimeout(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
+        }
+      }, 60);
+      return () => clearTimeout(timer);
+    }
+  }, [view]);
 
   useEffect(() => {
     if (!githubUsername) return;
@@ -291,17 +303,17 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
     let Hmax = 0;
     let lastH = -1;
     let dpr = 1;
-    let gutter = 30;
-    const labelW = 30;
+    let gutter = 42;
+    const labelW = 42;
 
     const col = new Float32Array(15);
     const colGoal = new Float32Array(15);
     const all = [
-      [14, 30, 45],
-      [12, 45, 74],
-      [18, 80, 138],
-      [42, 136, 216],
-      [124, 199, 255],
+      [22, 38, 58],
+      [16, 68, 110],
+      [22, 105, 175],
+      [56, 165, 245],
+      [135, 208, 255],
     ];
     for (let k = 0; k < 5; k++) {
       for (let ch = 0; ch < 3; ch++) {
@@ -385,7 +397,10 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
       const Hc = lerp(H2, H3, e);
 
       if (Math.abs(Hc - lastH) > 0.2) {
-        stage.style.height = `${Hc.toFixed(1)}px`;
+        const currentH = Math.ceil(Hc);
+        stage.style.height = `${currentH}px`;
+        canvas.style.height = `${currentH}px`;
+        canvas.height = Math.round(currentH * dpr);
         lastH = Hc;
       }
 
@@ -396,7 +411,7 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
       const b = extent(cam, e, false);
       const pad = lerp(2, 20, e);
       const left = pad + gutter * (1 - e);
-      const top = pad + 20 * (1 - e);
+      const top = pad + 24 * (1 - e);
       const aw = W - left - pad;
       const ah = Hc - top - pad;
       const bw = Math.max(1e-6, b.maxx - b.minx);
@@ -421,7 +436,7 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
       const w = lerp(0.78, 0.9, e);
       const off = (1 - w) / 2;
       const radius = lerp(0.17, 0.03, e) * s;
-      const outline = (1 - e) * 0.07;
+      const outline = (1 - e) * 0.16;
       const lift = 0.7 * e;
       const ex = col[0], ey = col[1], ez = col[2];
 
@@ -519,7 +534,7 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
         ctx.textBaseline = 'middle';
         if (gutter > 0) {
           for (const r of weekdayRows) {
-            ctx.fillText(r.label, px(0, r.day + 0.5) - 6, py(0, r.day + 0.5, 0));
+            ctx.fillText(r.label, px(0, r.day + 0.5) - 8, py(0, r.day + 0.5, 0));
           }
         }
       }
@@ -558,20 +573,23 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
       const w = Math.round(stage.clientWidth);
       if (!w || !n) return;
       W = w;
-      gutter = W < 520 ? 0 : labelW;
+      gutter = labelW;
       dpr = Math.min(2, window.devicePixelRatio || 1);
 
-      const b2 = extent(camera(0), 0, true);
-      H2 = 20 + 4 + ((b2.maxy - b2.miny) / (b2.maxx - b2.minx)) * (W - gutter - 4);
+      const aw = W - gutter - 16;
+      const cellStep = aw / Math.max(1, weeks);
+      H2 = Math.ceil(34 + 14 + 7 * cellStep);
       const b3 = extent(camera(1), 1, true);
       const natural = ((b3.maxy - b3.miny) / (b3.maxx - b3.minx)) * (W - 40) + 40;
       H3 = Math.max(Math.min(natural, W * 0.72, 600), Math.min(natural, 240));
       Hmax = Math.ceil(Math.max(H2, H3));
 
+      const curH = Math.ceil(view === '2d' ? H2 : Hmax);
       canvas.width = Math.round(W * dpr);
-      canvas.height = Math.round(Hmax * dpr);
+      canvas.height = Math.round(curH * dpr);
       canvas.style.width = `${W}px`;
-      canvas.style.height = `${Hmax}px`;
+      canvas.style.height = `${curH}px`;
+      stage.style.height = `${curH}px`;
       lastH = -1;
       draw();
     };
@@ -796,21 +814,48 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
       </header>
 
       <div className="relative rounded-xl border border-slate-800/80 bg-slate-900/40 p-3 sm:p-4">
-        <div ref={stageRef} className="relative w-full overflow-hidden rounded-lg min-h-[160px] md:min-h-[200px]">
-          <canvas ref={canvasRef} tabIndex={0} role="img" className="absolute top-0 left-0 block outline-none cursor-grab active:cursor-grabbing" />
+        <div
+          ref={scrollRef}
+          className="w-full overflow-x-auto overflow-y-hidden pb-1 scrollbar-thin scrollbar-thumb-slate-700/50"
+        >
           <div
-            ref={tipRef}
-            role="tooltip"
-            className={`pointer-events-none absolute z-20 whitespace-nowrap rounded-lg border border-slate-700/80 bg-slate-900/95 px-3 py-1.5 text-xs font-medium text-slate-100 shadow-xl transition-opacity duration-150 backdrop-blur-md ${
-              activeCell ? 'opacity-100' : 'opacity-0'
+            ref={stageRef}
+            className={`relative rounded-lg overflow-hidden ${
+              view === '2d' ? 'min-w-[700px] md:min-w-0' : 'w-full min-h-[240px]'
             }`}
           >
-            {activeCell && (
-              <>
-                <strong className="font-semibold text-sky-400">{activeCell.count} {activeCell.count === 1 ? 'contribution' : 'contributions'}</strong>
-                <span className="text-slate-400"> on {new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(dayMs(activeCell.date))}</span>
-              </>
-            )}
+            <canvas
+              ref={canvasRef}
+              tabIndex={0}
+              role="img"
+              className={`absolute top-0 left-0 block outline-none cursor-grab active:cursor-grabbing ${
+                view === '3d' ? 'touch-none' : 'touch-auto'
+              }`}
+            />
+            <div
+              ref={tipRef}
+              role="tooltip"
+              className={`pointer-events-none absolute z-20 whitespace-nowrap rounded-lg border border-slate-700/80 bg-slate-900/95 px-3 py-1.5 text-xs font-medium text-slate-100 shadow-xl transition-opacity duration-150 backdrop-blur-md ${
+                activeCell ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              {activeCell && (
+                <>
+                  <strong className="font-semibold text-sky-400">
+                    {activeCell.count} {activeCell.count === 1 ? 'contribution' : 'contributions'}
+                  </strong>
+                  <span className="text-slate-400">
+                    {' '}
+                    on{' '}
+                    {new Intl.DateTimeFormat('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    }).format(dayMs(activeCell.date))}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
@@ -840,7 +885,11 @@ export default function ContributionSkyline({ githubUsername = 'pgdiginitin78', 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 border-t border-slate-800/60 pt-3">
           <div className="flex items-center gap-2">
             <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-            <span>{view === '3d' ? 'Drag to orbit in 3D · Double-click to reset' : 'Hover a cell · Arrow keys to walk grid'}</span>
+            <span>
+              {view === '3d'
+                ? 'Drag to orbit in 3D · Double-click to reset'
+                : 'Swipe to view full year · Tap cell for details'}
+            </span>
           </div>
 
           <div className="flex items-center gap-1.5" onMouseLeave={() => setLegendLevel(-1)}>
