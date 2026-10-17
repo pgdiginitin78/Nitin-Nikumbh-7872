@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { LampContainer } from '@/components/ui/lamp';
 import Snowfall from '../components/Snowfall.jsx';
 import CharacterScene from '../components/CharacterScene.jsx';
-import TechStack from '../components/TechStack.jsx';
 import ContributionSkyline from '../components/ContributionSkyline.jsx';
 import SkillChips from '../components/SkillChips.jsx';
 
