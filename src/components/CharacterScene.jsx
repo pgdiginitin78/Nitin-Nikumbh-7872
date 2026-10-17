@@ -105,13 +105,16 @@ export default function CharacterScene({ onReady }) {
       }
 
       const aboutWrapper = document.getElementById('about-character-target');
-      if (aboutWrapper) {
+      const aboutSection = document.getElementById('about');
+      if (aboutWrapper && aboutSection) {
         const aRect = aboutWrapper.getBoundingClientRect();
+        const aboutRect = aboutSection.getBoundingClientRect();
         const visualRightShift = isLg ? 80 : 0;
         const aboutScreenX = aRect.left + aRect.width / 2 + visualRightShift;
+        const aboutScreenY = aRect.top - aboutRect.top + aRect.height / 2;
         aboutOffset = {
           x: window.innerWidth / 2 - aboutScreenX,
-          y: isLg ? 20 : 60,
+          y: isLg ? window.innerHeight / 2 - aboutScreenY : 50,
         };
       }
 
@@ -132,7 +135,7 @@ export default function CharacterScene({ onReady }) {
       const aboutCanvasHeight = isLg ? 650 : 500;
 
       const baseZoomHero = width < 768 ? 0.62 : width < 1024 ? 0.78 : width < 1200 ? 0.82 : 0.9;
-      const baseZoomAbout = width < 768 ? 0.65 : width < 1024 ? 0.76 : width < 1200 ? 0.80 : 0.85;
+      const baseZoomAbout = width < 768 ? 0.65 : width < 1024 ? 0.76 : width < 1200 ? 0.8 : 0.85;
 
       const heroScale = Math.min(1, Math.max(0.65, heroCanvasHeight / Math.min(height, 900)));
       const aboutScale = Math.min(1, Math.max(0.65, aboutCanvasHeight / Math.min(height, 900)));
@@ -203,7 +206,7 @@ export default function CharacterScene({ onReady }) {
         trigger: '#home',
         start: 'top top',
         endTrigger: '#about',
-        end: 'bottom bottom',
+        end: 'top top',
         pin: container.parentElement,
         pinSpacing: false,
         scrub: true,
@@ -228,11 +231,19 @@ export default function CharacterScene({ onReady }) {
           camState.offsetY = gsap.utils.interpolate(heroOffset.y, aboutOffset.y, p);
 
           const heroCanvasHeight = isLg ? 720 : 550;
-          const baseZoomHero = window.innerWidth < 1024 ? 0.78 : window.innerWidth < 1200 ? 0.82 : 0.9;
-          const baseZoomAbout = window.innerWidth < 1024 ? 0.72 : window.innerWidth < 1200 ? 0.80 : 0.85;
+          const baseZoomHero =
+            window.innerWidth < 1024 ? 0.78 : window.innerWidth < 1200 ? 0.82 : 0.9;
+          const baseZoomAbout =
+            window.innerWidth < 1024 ? 0.72 : window.innerWidth < 1200 ? 0.8 : 0.85;
 
-          const heroScale = Math.min(1, Math.max(0.65, heroCanvasHeight / Math.min(window.innerHeight, 900)));
-          const aboutScale = Math.min(1, Math.max(0.65, aboutCanvasHeight / Math.min(window.innerHeight, 900)));
+          const heroScale = Math.min(
+            1,
+            Math.max(0.65, heroCanvasHeight / Math.min(window.innerHeight, 900)),
+          );
+          const aboutScale = Math.min(
+            1,
+            Math.max(0.65, aboutCanvasHeight / Math.min(window.innerHeight, 900)),
+          );
 
           const heroZoom = baseZoomHero * heroScale;
           const aboutZoom = baseZoomAbout * aboutScale;
@@ -451,7 +462,10 @@ export default function CharacterScene({ onReady }) {
   }, [onReady]);
 
   return (
-    <div className="hidden md:block absolute top-0 left-0 w-full h-[100dvh] z-20 pointer-events-none">
+    <div
+      className="hidden md:block absolute top-0 left-0 w-full h-[100dvh] z-20 pointer-events-none"
+      data-lenis-prevent="true"
+    >
       <div
         ref={hostRef}
         className="absolute inset-0 overflow-hidden"
