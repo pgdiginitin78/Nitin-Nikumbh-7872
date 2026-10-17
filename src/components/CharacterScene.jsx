@@ -370,6 +370,7 @@ export default function CharacterScene({ onReady }) {
     const animate = () => {
       if (disposed) return;
       frame = requestAnimationFrame(animate);
+      if (window.innerWidth < 768) return;
       const delta = Math.min(clock.getDelta(), 0.05);
 
       if (started && !reduced) {
@@ -447,7 +448,7 @@ export default function CharacterScene({ onReady }) {
   }, [onReady]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-[100dvh] z-20 pointer-events-none">
+    <div className="hidden md:block absolute top-0 left-0 w-full h-[100dvh] z-20 pointer-events-none">
       <div
         ref={hostRef}
         className="absolute inset-0 overflow-hidden"

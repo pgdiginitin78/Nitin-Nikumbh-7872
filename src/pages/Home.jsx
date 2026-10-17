@@ -213,7 +213,7 @@ export default function Home() {
 
           <div
             id="hero-character-target"
-            className="relative w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] flex items-center justify-center animate-[fadeIn_1.2s_ease-out_0.2s_both] pointer-events-none"
+            className="relative w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] hidden md:flex items-center justify-center animate-[fadeIn_1.2s_ease-out_0.2s_both] pointer-events-none"
           />
         </div>
       </section>
@@ -300,7 +300,7 @@ export default function Home() {
 
             <div
               id="about-character-target"
-              className="relative flex justify-center h-[350px] lg:h-[580px] w-full mt-8 lg:mt-0"
+              className="relative md:flex justify-center hidden  h-[350px] lg:h-[580px] w-full mt-8 lg:mt-0"
             >
               <div className="absolute bottom-0 left-0 right-0 bg-sky-500/20 blur-[100px] rounded-full w-full max-w-sm h-[90%] mx-auto z-0" />
               <div className="absolute w-full h-[600px] lg:h-[800px] top-[-100px] lg:top-[-180px] z-10 pointer-events-none" />
@@ -310,11 +310,11 @@ export default function Home() {
       </section>
 
       <section
-        className="py-24 px-6 max-w-5xl mx-auto relative z-10"
+        className="py-14 px-6 max-w-5xl mx-auto relative z-10"
         id="experience"
         data-lenis-prevent="true"
       >
-        <div className="text-center mb-24">
+        <div className="text-center mb-14">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-200 mb-2 leading-tight">
             My career &amp;
             <br />
