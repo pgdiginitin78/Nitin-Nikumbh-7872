@@ -57,7 +57,7 @@ export default function Navbar() {
 
   return (
     <nav ref={navContainerRef} className="fixed top-0 left-0 right-0 z-50 px-4 pt-3">
-      <div className="max-w-7xl w-full mx-auto rounded-2xl bg-white/5 backdrop-blur-xl backdrop-saturate-150 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+      <div className="max-w-[1380px] w-full mx-auto rounded-2xl bg-white/5 backdrop-blur-xl backdrop-saturate-150 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
         <div className="flex justify-between h-16 items-center px-5">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={(e) => handleLinkClick(e, '#home')}>
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="My Logo" className="h-16 w-auto" />

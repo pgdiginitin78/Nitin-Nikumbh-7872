@@ -111,12 +111,10 @@ export default function CharacterScene({ onReady }) {
         const aboutRect = aboutSection.getBoundingClientRect();
         const targetCenterX = aRect.left + aRect.width / 2;
         const targetCenterY = aRect.top - aboutRect.top + aRect.height / 2;
-        const visualRightShift = window.innerWidth >= 1440 ? 30 : window.innerWidth >= 1200 ? 15 : 0;
-        const rawYOffset = window.innerHeight / 2 - targetCenterY;
 
         aboutOffset = {
-          x: window.innerWidth / 2 - (targetCenterX + visualRightShift),
-          y: Math.max(-100, Math.min(25, rawYOffset)),
+          x: window.innerWidth / 2 - targetCenterX,
+          y: window.innerHeight / 2 - targetCenterY,
         };
       }
 
@@ -133,15 +131,10 @@ export default function CharacterScene({ onReady }) {
       camera.aspect = width / height;
 
       const isLg = window.innerWidth >= 1024;
-      const heightFactor = Math.min(1, Math.max(0.65, height / 850));
-
       const baseZoomHero = width < 768 ? 0.62 : width < 1024 ? 0.78 : width < 1200 ? 0.82 : 0.9;
-      const baseZoomAbout = width < 768 ? 0.65 : width < 1024 ? 0.72 : width < 1200 ? 0.76 : 0.82;
+      const baseZoomAbout = 0.58;
 
-      const heroZoom = baseZoomHero * heightFactor;
-      const aboutZoom = baseZoomAbout * heightFactor;
-
-      camState.zoom = gsap.utils.interpolate(heroZoom, aboutZoom, scrollProgress);
+      camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, scrollProgress);
       camera.zoom = camState.zoom;
       camera.updateProjectionMatrix();
 
@@ -221,23 +214,18 @@ export default function CharacterScene({ onReady }) {
           camState.z = gsap.utils.interpolate(24.05, 32, p);
 
           camState.lookX = 0;
-          camState.lookY = gsap.utils.interpolate(12.0, isLg ? 7.0 : 9.5, p);
+          camState.lookY = gsap.utils.interpolate(12.0, 6.5, p);
           camState.lookZ = 0;
 
           camState.fov = gsap.utils.interpolate(14.5, 25, p);
           camState.offsetX = gsap.utils.interpolate(heroOffset.x, aboutOffset.x, p);
           camState.offsetY = gsap.utils.interpolate(heroOffset.y, aboutOffset.y, p);
 
-          const heightFactor = Math.min(1, Math.max(0.65, window.innerHeight / 850));
           const baseZoomHero =
             window.innerWidth < 1024 ? 0.78 : window.innerWidth < 1200 ? 0.82 : 0.9;
-          const baseZoomAbout =
-            window.innerWidth < 1024 ? 0.72 : window.innerWidth < 1200 ? 0.76 : 0.82;
+          const baseZoomAbout = 0.58;
 
-          const heroZoom = baseZoomHero * heightFactor;
-          const aboutZoom = baseZoomAbout * heightFactor;
-
-          camState.zoom = gsap.utils.interpolate(heroZoom, aboutZoom, p);
+          camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, p);
 
           for (let i = 0; i < opacityMaterials.length; i++) {
             opacityMaterials[i].opacity = p;
