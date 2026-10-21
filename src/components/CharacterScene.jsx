@@ -89,6 +89,14 @@ export default function CharacterScene({ onReady }) {
     const mouse = { x: 0, y: 0 };
     const follow = { x: 0, y: 0 };
 
+    const tabletScale = () => Math.min(1, window.innerWidth / 965);
+    const tabletZoom = () => 0.68 * tabletScale() * (820 / window.innerHeight);
+    const tabletAnchorY = () =>
+      Math.min(
+        window.innerHeight * 0.82,
+        window.innerHeight + 11 - 257 * tabletScale(),
+      );
+
     const updateHeroOffset = () => {
       const isLg = window.innerWidth >= 1024;
       const heroWrapper = document.getElementById('hero-character-target');
@@ -96,9 +104,11 @@ export default function CharacterScene({ onReady }) {
       if (heroWrapper && homeSection) {
         const hRect = heroWrapper.getBoundingClientRect();
         const homeRect = homeSection.getBoundingClientRect();
-        const isTab = !isLg && window.innerWidth >= 768;
+        const isTab = window.innerWidth >= 768 && window.innerWidth < 1100;
         const heroScreenX = hRect.left + hRect.width / 2;
-        const heroScreenY = hRect.top - homeRect.top + hRect.height / 2 + (isTab ? 45 : 0);
+        const heroScreenY = isTab
+          ? tabletAnchorY()
+          : hRect.top - homeRect.top + hRect.height / 2;
         heroOffset = {
           x: window.innerWidth / 2 - heroScreenX,
           y: window.innerHeight / 2 - heroScreenY,
@@ -134,7 +144,7 @@ export default function CharacterScene({ onReady }) {
       camera.aspect = width / height;
 
       const isLg = window.innerWidth >= 1024;
-      const baseZoomHero = width < 768 ? 0.62 : width < 1024 ? 0.66 : width < 1200 ? 0.82 : 0.9;
+      const baseZoomHero = width < 768 ? 0.62 : width < 1100 ? tabletZoom() : width < 1200 ? 0.82 : 0.9;
       const baseZoomAbout = width < 1024 ? 0.52 : 0.58;
 
       camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, scrollProgress);
@@ -227,8 +237,8 @@ export default function CharacterScene({ onReady }) {
           const baseZoomHero =
             window.innerWidth < 768
               ? 0.62
-              : window.innerWidth < 1024
-                ? 0.66
+              : window.innerWidth < 1100
+                ? tabletZoom()
                 : window.innerWidth < 1200
                   ? 0.82
                   : 0.9;

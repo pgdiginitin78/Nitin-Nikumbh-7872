@@ -121,7 +121,7 @@ export default function Home() {
 
         <Snowfall />
 
-        <div className="relative z-10 max-w-[1380px] w-full mx-auto px-4 sm:px-6 pt-24 pb-8 md:pt-24 md:pb-8 lg:pt-28 lg:pb-12 min-h-[100dvh] flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-4 lg:gap-12 text-center md:text-left">
+        <div className="relative z-10 max-w-[1380px] w-full mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-24 pb-8 md:pt-24 md:pb-8 lg:pt-28 lg:pb-12 min-h-[100dvh] flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-6 md:gap-8 lg:gap-12 text-center md:text-left">
           <div className="flex flex-col justify-center animate-[fadeUp_0.9s_ease-out_both] w-full max-w-xl mx-auto md:max-w-none md:pt-4">
             <p className="mt-0 text-[1.1rem] md:text-[1.15rem] text-slate-400 tracking-wider">
               Hi, I'm
@@ -184,35 +184,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-
-            <ul className="grid grid-cols-3 max-w-md mx-auto md:mx-0 lg:max-w-none lg:flex lg:flex-wrap justify-center md:justify-start w-full gap-2 sm:gap-4 md:gap-3 lg:gap-8 pt-2">
-              <li className="flex flex-col items-center md:items-start text-center md:text-left">
-                <strong className="text-[1.35rem] sm:text-[1.55rem] md:text-[1.55rem] lg:text-[1.75rem] font-extrabold text-slate-50">
-                  5+
-                </strong>
-                <span className="text-[0.7rem] sm:text-[0.75rem] md:text-[0.72rem] lg:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
-                  Years Experience
-                </span>
-              </li>
-              <li className="flex flex-col items-center md:items-start text-center md:text-left">
-                <strong className="text-[1.35rem] sm:text-[1.55rem] md:text-[1.55rem] lg:text-[1.75rem] font-extrabold text-slate-50">
-                  12+
-                </strong>
-                <span className="text-[0.7rem] sm:text-[0.75rem] md:text-[0.72rem] lg:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
-                  Projects Built
-                </span>
-              </li>
-              <li className="flex flex-col items-center md:items-start text-center md:text-left">
-                <strong className="text-[1.35rem] sm:text-[1.55rem] md:text-[1.55rem] lg:text-[1.75rem] font-extrabold text-slate-50">
-                  100%
-                </strong>
-                <span className="text-[0.7rem] sm:text-[0.75rem] md:text-[0.72rem] lg:text-[0.78rem] text-slate-300 font-medium uppercase tracking-[0.05em] sm:tracking-[0.08em]">
-                  Responsive
-                </span>
-              </li>
-            </ul>
           </div>
-
           <div
             id="hero-character-target"
             className="relative w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] hidden md:flex items-center justify-center animate-[fadeIn_1.2s_ease-out_0.2s_both] pointer-events-none"
