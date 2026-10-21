@@ -121,7 +121,7 @@ export default function Home() {
 
         <Snowfall />
 
-        <div className="relative z-10 max-w-[1280px] w-full mx-auto px-4 sm:px-6 pt-24 pb-8 md:pt-24 md:pb-8 lg:pt-28 lg:pb-12 min-h-[100dvh] flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-4 lg:gap-12 text-center md:text-left">
+        <div className="relative z-10 max-w-[1380px] w-full mx-auto px-4 sm:px-6 pt-24 pb-8 md:pt-24 md:pb-8 lg:pt-28 lg:pb-12 min-h-[100dvh] flex flex-col md:grid md:grid-cols-2 items-center justify-center gap-4 lg:gap-12 text-center md:text-left">
           <div className="flex flex-col justify-center animate-[fadeUp_0.9s_ease-out_both] w-full max-w-xl mx-auto md:max-w-none md:pt-4">
             <p className="mt-0 text-[1.1rem] md:text-[1.15rem] text-slate-400 tracking-wider">
               Hi, I'm
@@ -274,8 +274,8 @@ export default function Home() {
           </motion.p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 mt-4 md:mt-6 lg:mt-8 pb-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 items-center justify-center">
+        <div className="max-w-6xl mx-auto px-6 mt-4 md:mt-6 lg:mt-8 pb-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center justify-center">
             <div className="space-y-4 flex flex-col justify-center">
               <div>
                 <SkillChips

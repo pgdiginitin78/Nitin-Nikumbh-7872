@@ -109,7 +109,8 @@ export default function CharacterScene({ onReady }) {
       if (aboutWrapper && aboutSection) {
         const aRect = aboutWrapper.getBoundingClientRect();
         const aboutRect = aboutSection.getBoundingClientRect();
-        const targetCenterX = aRect.left + aRect.width / 2;
+        const visualRightShift = window.innerWidth >= 1200 ? 95 : window.innerWidth >= 1024 ? 90 : 80;
+        const targetCenterX = aRect.left + aRect.width / 2 + visualRightShift;
         const targetCenterY = aRect.top - aboutRect.top + aRect.height / 2;
 
         aboutOffset = {
