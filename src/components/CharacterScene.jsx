@@ -132,8 +132,9 @@ export default function CharacterScene({ onReady }) {
       camera.aspect = width / height;
 
       const isLg = window.innerWidth >= 1024;
-      const baseZoomHero = width < 768 ? 0.62 : width < 1024 ? 0.78 : width < 1200 ? 0.82 : 0.9;
-      const baseZoomAbout = 0.58;
+      const baseZoomHero =
+        width < 768 ? 0.62 : width < 1024 ? 0.48 : width < 1200 ? 0.82 : 0.9;
+      const baseZoomAbout = width < 1024 ? 0.46 : 0.58;
 
       camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, scrollProgress);
       camera.zoom = camState.zoom;
@@ -223,8 +224,14 @@ export default function CharacterScene({ onReady }) {
           camState.offsetY = gsap.utils.interpolate(heroOffset.y, aboutOffset.y, p);
 
           const baseZoomHero =
-            window.innerWidth < 1024 ? 0.78 : window.innerWidth < 1200 ? 0.82 : 0.9;
-          const baseZoomAbout = 0.58;
+            window.innerWidth < 768
+              ? 0.62
+              : window.innerWidth < 1024
+                ? 0.48
+                : window.innerWidth < 1200
+                  ? 0.82
+                  : 0.9;
+          const baseZoomAbout = window.innerWidth < 1024 ? 0.46 : 0.58;
 
           camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, p);
 
