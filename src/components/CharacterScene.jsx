@@ -96,8 +96,9 @@ export default function CharacterScene({ onReady }) {
       if (heroWrapper && homeSection) {
         const hRect = heroWrapper.getBoundingClientRect();
         const homeRect = homeSection.getBoundingClientRect();
+        const isTab = !isLg && window.innerWidth >= 768;
         const heroScreenX = hRect.left + hRect.width / 2;
-        const heroScreenY = hRect.top - homeRect.top + hRect.height / 2;
+        const heroScreenY = hRect.top - homeRect.top + hRect.height / 2 + (isTab ? 45 : 0);
         heroOffset = {
           x: window.innerWidth / 2 - heroScreenX,
           y: window.innerHeight / 2 - heroScreenY,
@@ -109,7 +110,8 @@ export default function CharacterScene({ onReady }) {
       if (aboutWrapper && aboutSection) {
         const aRect = aboutWrapper.getBoundingClientRect();
         const aboutRect = aboutSection.getBoundingClientRect();
-        const visualRightShift = window.innerWidth >= 1200 ? 95 : window.innerWidth >= 1024 ? 90 : 80;
+        const visualRightShift =
+          window.innerWidth >= 1200 ? 95 : window.innerWidth >= 1024 ? 90 : 80;
         const targetCenterX = aRect.left + aRect.width / 2 + visualRightShift;
         const targetCenterY = aRect.top - aboutRect.top + aRect.height / 2;
 
@@ -132,9 +134,8 @@ export default function CharacterScene({ onReady }) {
       camera.aspect = width / height;
 
       const isLg = window.innerWidth >= 1024;
-      const baseZoomHero =
-        width < 768 ? 0.62 : width < 1024 ? 0.48 : width < 1200 ? 0.82 : 0.9;
-      const baseZoomAbout = width < 1024 ? 0.46 : 0.58;
+      const baseZoomHero = width < 768 ? 0.62 : width < 1024 ? 0.66 : width < 1200 ? 0.82 : 0.9;
+      const baseZoomAbout = width < 1024 ? 0.52 : 0.58;
 
       camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, scrollProgress);
       camera.zoom = camState.zoom;
@@ -227,11 +228,11 @@ export default function CharacterScene({ onReady }) {
             window.innerWidth < 768
               ? 0.62
               : window.innerWidth < 1024
-                ? 0.48
+                ? 0.66
                 : window.innerWidth < 1200
                   ? 0.82
                   : 0.9;
-          const baseZoomAbout = window.innerWidth < 1024 ? 0.46 : 0.58;
+          const baseZoomAbout = window.innerWidth < 1024 ? 0.52 : 0.58;
 
           camState.zoom = gsap.utils.interpolate(baseZoomHero, baseZoomAbout, p);
 
